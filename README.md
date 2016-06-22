@@ -85,7 +85,7 @@ If the original changes, then these changes are also visible in this Reference c
 # Roadmap
 * [x] Build html from the JSON
 * [x] Bind events to html identifiers
-* [ ] Reuse components with own event scope
+* [x] Reuse components with own event scope
 * [ ] Fetch async data
 * [ ] Use conditions as components
 * [ ] Use the collection component
