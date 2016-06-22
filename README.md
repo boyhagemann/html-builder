@@ -98,7 +98,13 @@ It allows child components to be nested inside a Partial component.
 * [x] Bind events to html identifiers
 * [x] Reuse components with own event scope
 * [ ] Fetch async data
-* [ ] Use conditions as components
+* [ ] Use the condition component
 * [ ] Use the collection component
-* [ ] Use the reference component
+* [ ] Use the partial component
+* [ ] Use the section component
+
+
+# Ideas for the cms part
+* Use autocomplete search to find nodes based on their type and contents
+* Tag nodes to quickly get a list view of all the tagged nodes
 
