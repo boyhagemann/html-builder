@@ -82,10 +82,16 @@ Within this Collection component, we can have 2 child components:
 * a Heading component with the product title
 * a Text component with the product description
 
-#### Reference
+#### Partial
 This component is a reference to another node in the structure. 
+It can be any node, either the current tree or another one.
 It will render exactly the same as the original.
-If the original changes, then these changes are also visible in this Reference component.
+If the original changes, then these changes are also visible in this Partial component.
+A partial can have multiple Section components.
+
+#### Section
+A Section component is an empty placeholder that can only be used in a Partial component.
+It allows child components to be nested inside a Partial component.
 
 # Roadmap
 * [x] Build html from the JSON
