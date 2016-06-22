@@ -1,6 +1,11 @@
 # html-builder
 A proof-of-concept setup for build SPA pages with a JSON config file
 
+#### Implementations
+* [Cycle.js engine] (http://github.com/boyhagemann/html-builder-engine-cycle) (work in progress)
+* React.js engine (coming up)
+* Elm engine (coming up)
+
 #### Guidelines
 * The JSON config should be the glue between a back-end and front-end implementation.
 * All information for a full-blown html page should be in the JSON config.
