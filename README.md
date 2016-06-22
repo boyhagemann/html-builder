@@ -104,6 +104,9 @@ It allows child components to be nested inside a Partial component.
 * [ ] Use the section component
 
 
+# Questions that need a solution
+* How to handle translations?
+
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
 * Tag nodes to quickly get a list view of all the tagged nodes
