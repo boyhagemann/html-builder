@@ -9,25 +9,7 @@ A proof-of-concept setup for build SPA pages with a JSON config file
 #### Guidelines
 * The JSON config should be the glue between a back-end and front-end implementation.
 * All information for a full-blown html page should be in the JSON config.
-
-## Config structure
-* nodes (the html tree structure)
-* events (the action triggers)
-
-#### Standards
-There should be standards for declaring nodes in the JSON config.
-Same goes for the event declaration
-
-#### Config building
-A (third party) application should be responsible for building the JSON config.
-This config can then either be stored in a central storage or in a domain-specific storage.
-
-#### Config parsing
-There should be a package that takes the JSON config an can turn it into a javascript SPA application.
-Candidates for parsing the JSON config into javascript are:
-* Cycle.js
-* React.js
-* Elm
+* The JSON must follow the [HTML Builder Protocol] (/protocol.md).
 
 # Architecture
 The system consists of several concepts that communicate in some way to each other.
