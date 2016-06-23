@@ -71,15 +71,24 @@ Every store can have a driver (reducer):
 All data is being stored in a plain object, used by the application.
 This gives us the abilitiy to do "time travel debugging", share states, unlimited undos of every action, etc.
 
-
-
-
 #### Side effects
 An action can trigger a side effect, such as:
 * render the DOM based on an Action payload (when a store changes, an Action message was sent).
 * call a REST resource with a Promise (a user clicked a button that sends an Action message with the resource info as payload).
 * update a store with data from an Action payload (the Promise sends the Action message with the response as payload). 
 
+#### Operators
+On top of the producers there can be many Operators.
+An operator can alter the value or time of the Producer.
+This can be very helpful to have control over the data thats comming from the Producer.
+Examples for operators are:
+* debounce(time)
+* delay(time)
+* limit(count)
+* skip(count)
+* retry(times)
+* pluck(key)
+* log(value => message)
 
 # Components
 All components can nest multiple child components
