@@ -127,6 +127,7 @@ It allows child components to be nested inside a Partial component.
 * Do we need a Try and Catch component?
 * Is every input component explicitly bound to a store?
 * Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
+* Maybe introduce a 'private' key in the config that holds sensitive information?
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
