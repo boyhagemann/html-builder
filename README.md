@@ -82,6 +82,8 @@ You give them some properties, and they will render html.
 ## Smart components 
 These type of components don't actually render anything.
 Instead, they do some other things that can be pretty useful.
+For now, the most needed components were actually the ones that inspired by template engines.
+This makes sense, because we are doing the same thing, only now with a central configration format.
 
 #### Condition
 Components can be rendered only when some conditions are met.
