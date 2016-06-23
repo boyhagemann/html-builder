@@ -141,6 +141,7 @@ It allows child components to be nested inside a Partial component.
 # Questions that need a solution
 * How to handle translations?
 * Do we need a Try and Catch component?
+* Is every input component explicitly bound to a store?
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
