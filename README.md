@@ -124,6 +124,7 @@ It allows child components to be nested inside a Partial component.
 * How to handle translations?
 * Do we need a Try and Catch component?
 * Is every input component explicitly bound to a store?
+* Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
