@@ -29,32 +29,57 @@ Candidates for parsing the JSON config into javascript are:
 * React.js
 * Elm
 
-# Data flow
+# Architecture
+The system consists of several concepts that communicate in some way to each other.
 
-#### DOM
-The html DOM can be rendered with the JSON config.
-
-#### Events
-The events are bound to specific elements in the DOM.
-These events trigger Actions with a certain payload.
-Examples of events are:
-* button clicks
-* window resize
-* url change
+#### Producers
+A producer is a stream of data which values change over time.
+They are actually the triggers for sending a message thru Actions.
+The JSON config holds a list of producers used in the application.
+Examples of producers are:
+* user events (click, change, keyUp, drag, resize)
+* timers (they can produce values over time)
+* sockets (the push values from external sources)
+* stores (when values change in the store, an Action message is sent)
 
 #### Actions
+Actions are only messages that accept a certain payload of metadata.
+These Actions or part of things called Reducers, but thats only for keeping code managable.
+Actions are not part of the JSON config, but only exist in the application code.
 When an action is called, that could result in 2 things:
 * calling more Actions
-* doing a side effect (data fetching, I/O operations)
-Every Action can update the current state.
+* doing a side effect (data fetching, I/O operations, render DOM)
 
 #### Stores
-The state is being stored in Stores.
-The can only be manipulated be thru Actions.
+The are the holders of the state.
+Any dataset that has more or less influence on the application should be in here.
+Stores can only be manipulated thru Actions.
+The JSON config holds a list of stores used in the application.
+
 Examples of stores are:
-* rest resources
-* local storage
-* window (screen width, url)
+* Data collected from a resource
+* Window information (for the current url and the screen size for example)
+* Validation errors (for displaying form messages)
+* The initial JSON config to build the entire system!
+
+Every store can have a driver (reducer):
+* REST
+* SOAP
+* DB
+* Local storage
+
+All data is being stored in a plain object, used by the application.
+This gives us the abilitiy to do "time travel debugging", share states, unlimited undos of every action, etc.
+
+
+
+
+#### Side effects
+An action can trigger a side effect, such as:
+* render the DOM based on changes in the store.
+* call a REST resource with a Promise and send an Action message when done.
+* update a store with data from an Action payload. 
+
 
 # Components
 All components can nest multiple child components
