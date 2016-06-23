@@ -76,9 +76,9 @@ This gives us the abilitiy to do "time travel debugging", share states, unlimite
 
 #### Side effects
 An action can trigger a side effect, such as:
-* render the DOM based on changes in the store.
-* call a REST resource with a Promise and send an Action message when done.
-* update a store with data from an Action payload. 
+* render the DOM based on an Action payload (when a store changes, an Action message was sent).
+* call a REST resource with a Promise (a user clicked a button that sends an Action message with the resource info as payload).
+* update a store with data from an Action payload (the Promise sends the Action message with the response as payload). 
 
 
 # Components
