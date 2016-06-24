@@ -52,6 +52,7 @@ Every store can have a driver (reducer):
 * SOAP
 * DB
 * Local storage
+* Renderer (for the nodes)
 
 All data is being stored in a plain object, used by the application.
 This gives us the abilitiy to do "time travel debugging", share states, unlimited undos of every action, etc.
@@ -141,6 +142,16 @@ A Catch component could also contain Try and Catch components.
 #### Exception
 An Exception component can only be passed into a Condition component as a child.
 This Exception component has a type and message that can be handled within a Catch component. 
+
+# Booting
+Assume we have a the most barebone situation for the config.
+What is the minimal step to do something?
+And what do we want to do?
+For now, let's assume we want to render html.
+There should be an "init" or "boot" key in the json config.
+That should hold a collection of initial action messages that need to be send.
+Here we can define that we need to fetch nodes first and put them in the store.
+When the store updates, then the nodes get automatically rendered thanks to the driver/reducer/side effect.
 
 # Roadmap
 * [x] Build html from the JSON
