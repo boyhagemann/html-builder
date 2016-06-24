@@ -96,6 +96,9 @@ Examples of conditional rendering are:
 * Show page when url matches
 * Media queries on screen size change
 
+> A cool thing about Conditions is that they can be used to matched to a url.
+> This means we can also nest Conditions within Conditions to get subpages and have breadcrumbs.
+
 #### Collection
 This component can take a collection of data from the store and map each item to the child components.
 For instance, we can have a Collection that points to a collection of products.
@@ -143,8 +146,6 @@ A Catch component could also contain Try and Catch components.
 * Is every input component explicitly bound to a store?
 * Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
 * Maybe introduce a 'private' key in the config that holds sensitive information?
-* Are pages special? In regards to breadcrumbs? Or can arbitrary types be discplayed as breadcrumbs?
-* Are conditions breadcrumbs? Because of showing/hiding, just like pages.
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
