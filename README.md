@@ -74,6 +74,10 @@ Examples for operators are:
 * pluck(key)
 * log(value => message)
 * parents(node) -> for breadcrumbs
+* trim (strings)
+* length(size) -> elipsis ...
+* slug
+* upper
 
 # Components
 All components can nest multiple child components
