@@ -1,0 +1,19 @@
+nodes
+  - type: div
+    properties
+      className: .page
+    children
+      - type: h1
+        text: Hello World
+      - type: p
+        text: A simple intro text
+      - type: ul
+        children:
+          - type: Collection
+            source: my.store.column
+            children:
+              - type: li
+              - text: {{my.store.column.title}}
+producers
+stores
+conditions
