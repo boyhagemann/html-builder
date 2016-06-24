@@ -17,6 +17,7 @@ stores:
       config:
         uri: http://domain.com/rest/nodes
         method: GET
+    collection: true
     driver: dom-renderer
     data:
       - ... some initial node data
