@@ -115,7 +115,7 @@ It allows child components to be nested inside a Partial component.
 * [x] Build html from the JSON
 * [x] Bind events to html identifiers
 * [x] Reuse components with own event scope
-* [ ] Fetch async data
+* [x] Fetch async data
 * [ ] Use the condition component
 * [ ] Use the collection component
 * [ ] Use the partial component
