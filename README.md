@@ -129,6 +129,10 @@ There can be multiple Catch components next to one Try component.
 Each of time can hook into different errors or exceptions thrown by the Try component.
 A Catch component could also contain Try and Catch components.
 
+#### Exception
+An Exception component can only be passed into a Condition component as a child.
+This Exception component has a type and message that can be handled within a Catch component. 
+
 # Roadmap
 * [x] Build html from the JSON
 * [x] Bind events to html identifiers
