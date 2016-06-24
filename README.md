@@ -43,6 +43,7 @@ Examples of stores are:
 * Data collected from a resource
 * Window information (for the current url and the screen size for example)
 * Validation errors (for displaying form messages)
+* Translations
 * A simple counter
 * The initial JSON config to build the entire system!
 
@@ -78,6 +79,7 @@ Examples for operators are:
 * length(size) -> elipsis ...
 * slug
 * upper
+* translate(text, lang)
 
 # Components
 All components can nest multiple child components
