@@ -116,6 +116,7 @@ It allows child components to be nested inside a Partial component.
 * [x] Bind events to html identifiers
 * [x] Reuse components with own event scope
 * [x] Fetch async data
+* [x] Add url history driver
 * [ ] Use the condition component
 * [ ] Use the collection component
 * [ ] Use the partial component
