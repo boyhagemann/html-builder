@@ -112,6 +112,18 @@ A partial can have multiple Section components.
 A Section component is an empty placeholder that can only be used in a Partial component.
 It allows child components to be nested inside a Partial component.
 
+#### Try
+Just like a regular try/catch block, every child component should render normally.
+In case of an error or exception, the Catch component is being rendered
+Every Try component must at least have one Catch component below itself to be useful.
+It is possible to have many Try and Catch components within one Try component.
+
+#### Catch
+When an error or exception occurs in the adjecent Try component, a Catch component will be rendered.
+There can be multiple Catch components next to one Try component.
+Each of time can hook into different errors or exceptions thrown by the Try component.
+A Catch component could also contain Try and Catch components.
+
 # Roadmap
 * [x] Build html from the JSON
 * [x] Bind events to html identifiers
@@ -126,7 +138,6 @@ It allows child components to be nested inside a Partial component.
 
 # Questions that need a solution
 * How to handle translations?
-* Do we need a Try and Catch component?
 * Is every input component explicitly bound to a store?
 * Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
 * Maybe introduce a 'private' key in the config that holds sensitive information?
