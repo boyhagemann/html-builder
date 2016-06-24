@@ -3,6 +3,26 @@
 This should contain all the specifications needed to build an application with the Html Builder.
 
 
+## Ideas
+There should be an init list of actions
+```yaml
+init:
+  - action: FETCH
+    payload:
+      store: nodes
+stores:
+  nodes:
+    connection:
+      adapter: rest
+      config:
+        uri: http://domain.com/rest/nodes
+        method: GET
+    driver: dom-renderer
+    data:
+      - ... some initial node data
+```
+
+
 ## 1. Root
 #### 1.1. The root of the file must contain three keys in arbitrary order:
 * nodes
