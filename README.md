@@ -56,6 +56,9 @@ Every store can have a driver (reducer):
 All data is being stored in a plain object, used by the application.
 This gives us the abilitiy to do "time travel debugging", share states, unlimited undos of every action, etc.
 
+> Every store can have an (intitial) set of data included in the JSON config.
+> Actually, all json config keys are then all stores automatically!
+
 #### Side effects
 An action can trigger a side effect, such as:
 * render the DOM based on an Action payload (when a store changes, an Action message was sent).
@@ -156,6 +159,7 @@ This Exception component has a type and message that can be handled within a Cat
 * Is every input component explicitly bound to a store?
 * Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
 * Maybe introduce a 'private' key in the config that holds sensitive information?
+* We could place node partials as a store in the config? So nodes can point to other nodes, a.k.a. relations.
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
