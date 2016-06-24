@@ -9,7 +9,8 @@ A proof-of-concept setup for build SPA pages with a JSON config file
 #### Guidelines
 * The JSON config should be the glue between a back-end and front-end implementation.
 * All information for a full-blown html page should be in the JSON config.
-* The JSON must follow the [HTML Builder Protocol] (/protocol.md).
+* The JSON must follow the [HTML Builder Protocol] (/protocol.md) and eventual a defined schema.
+* Here are some [examples of config files] (/examples) in different formats.
 
 # Architecture
 The system consists of several concepts that communicate in some way to each other.
