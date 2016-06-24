@@ -144,6 +144,7 @@ A Catch component could also contain Try and Catch components.
 * Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
 * Maybe introduce a 'private' key in the config that holds sensitive information?
 * Are pages special? In regards to breadcrumbs? Or can arbitrary types be discplayed as breadcrumbs?
+* Are conditions breadcrumbs? Because of showing/hiding, just like pages.
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
