@@ -21,7 +21,7 @@ They are actually the triggers for sending a message thru Actions.
 The JSON config holds a list of producers used in the application.
 Examples of producers are:
 * user events (click, change, keyUp, drag, resize)
-* timers (they can produce values over time)
+* timers (they can produce values over time, which is set in a store)
 * sockets (the push values from external sources)
 * stores (when values change in the store, an Action message is sent)
 
@@ -43,6 +43,7 @@ Examples of stores are:
 * Data collected from a resource
 * Window information (for the current url and the screen size for example)
 * Validation errors (for displaying form messages)
+* A simple counter
 * The initial JSON config to build the entire system!
 
 Every store can have a driver (reducer):
@@ -72,6 +73,7 @@ Examples for operators are:
 * retry(times)
 * pluck(key)
 * log(value => message)
+* parents(node) -> for breadcrumbs
 
 # Components
 All components can nest multiple child components
