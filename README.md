@@ -97,7 +97,7 @@ Examples for operators are:
 ##### Styles
 * block
 * list--small
-* list--success
+* btn--success
 
 # Components
 All components can nest multiple child components
