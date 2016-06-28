@@ -90,9 +90,9 @@ Examples for operators are:
 * translate(text, lang)
 
 ##### Validation
-* string
-* email
-* required
+* string(message)
+* email(message)
+* required(message)
 
 # Components
 All components can nest multiple child components
