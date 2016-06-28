@@ -71,6 +71,8 @@ On top of the producers there can be many Operators.
 An operator can alter the value or time of the Producer.
 This can be very helpful to have control over the data thats comming from the Producer.
 Examples for operators are:
+
+##### Data
 * debounce(time)
 * delay(time)
 * limit(count)
@@ -79,11 +81,18 @@ Examples for operators are:
 * pluck(key)
 * log(value => message)
 * parents(node) -> for breadcrumbs
+
+##### Filters
 * trim(strings)
 * length(size) -> elipsis ...
 * slug(field)
 * upper(field)
 * translate(text, lang)
+
+##### Validation
+* string
+* email
+* required
 
 # Components
 All components can nest multiple child components
