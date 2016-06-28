@@ -99,6 +99,8 @@ Examples for operators are:
 * list--small
 * btn--success
 
+> Operators can work on both the properties and the content of a component.
+
 # Components
 All components can nest multiple child components
 

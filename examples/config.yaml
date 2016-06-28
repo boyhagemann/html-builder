@@ -1,19 +1,74 @@
-nodes
-  - type: div
-    properties
+# The nodes contain components that either needs to be rendered to the DOM
+# or node
+nodes:
+  - id: 1
+    type: div
+    properties:
       className: .page
-    children
-      - type: h1
-        text: Hello World
-      - type: p
-        text: A simple intro text
-      - type: ul
-        children:
-          - type: Collection
-            source: my.store.column
-            children:
-              - type: li
-              - text: {{my.store.column.title}}
-producers
-stores
-conditions
+  - id: 2
+    parent: 1
+    type: h1
+    text: Hello World
+    order: 0
+  - id: 3
+    parent: 1
+    type: p
+    text: A simple intro text
+    order: 1
+  - id: 4
+    parent: 3
+    type: ul
+  - id: 5
+    parent: 4
+    type: li
+    text: {{my-alias.store.column.title}}
+
+# The producers produce values over time, independent of any Node component.
+producers:
+  - id: 1
+    type: timer
+    properties:
+      interval: 1000
+
+# The operators are bound to one Node component and are executed
+# in the given order after a Node is rendered.
+operators:
+  - id: 1
+    node: 4
+    type: collection
+    properties:
+      store: products
+      alias: my-alias.store
+    order: 1
+  - id: 2
+    node: 4
+    type: event
+    properties:
+      on: click
+      action: INCREMENT
+      payload:
+        amount: 1
+    order: 1
+
+stores:
+  - id: 1
+    name: nodes
+    connection:
+      adapter: rest
+      config:
+        uri: http://domain.com/rest/nodes
+        method: GET
+    collection: true
+    driver: dom-renderer
+  - id: 2
+    name: products
+    connection:
+      adapter: rest
+      config:
+        uri: http://domain.com/rest/store
+        method: GET
+    collection: true
+    driver: generic
+
+conditions:
+
