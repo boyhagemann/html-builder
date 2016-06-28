@@ -175,4 +175,5 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
 * Tag nodes to quickly get a list view of all the tagged nodes
+* Quick controls for changing the behaviour directly from a node list without a config page
 
