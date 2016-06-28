@@ -116,6 +116,11 @@ Within this Collection component, we can have 2 child components:
 * a Heading component with the product title
 * a Text component with the product description
 
+#### Form
+A Form component is a wrapper for various input components.
+With this wrapper we can validate or send data in one go.
+This can be handy for having a Progress component, in which a user sees his progress in steps.
+
 #### Partial
 This component is a reference to another node in the structure. 
 It can be any node, either the current tree or another one.
