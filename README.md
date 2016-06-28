@@ -94,6 +94,11 @@ Examples for operators are:
 * email(message)
 * required(message)
 
+##### Styles
+* block
+* list--small
+* list--success
+
 # Components
 All components can nest multiple child components
 
