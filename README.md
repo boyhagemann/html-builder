@@ -154,7 +154,8 @@ Each of time can hook into different errors or exceptions thrown by the Try comp
 A Catch component could also contain Try and Catch components.
 
 #### Exception
-An Exception component can only be passed into a Condition component as a child.
+An Exception component has the same footprint as a Condition component.
+The difference is that an exception is thrown when the condition is met with the current state.
 This Exception component has a type and message that can be handled within a Catch component. 
 
 # Booting
