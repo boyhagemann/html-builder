@@ -70,19 +70,26 @@ An action can trigger a side effect, such as:
 On top of the producers there can be many Operators.
 An operator can alter the value or time of the Producer.
 This can be very helpful to have control over the data thats comming from the Producer.
-Examples for operators are:
+Examples of operators are (grouped by type):
 
-##### Data
+##### Action
 * debounce(time)
 * delay(time)
+* retry(times)
+* defaults(key, value)
+
+##### Validation
+* string(message)
+* email(message)
+* required(message)
+
+##### Collection
 * limit(count)
 * skip(count)
-* retry(times)
 * pluck(key)
-* log(value => message)
 * parents(node) -> for breadcrumbs
 
-##### Modifiers
+##### Modifier
 * trim(strings)
 * length(size) -> elipsis ...
 * slug(field)
@@ -91,15 +98,16 @@ Examples for operators are:
 * translate(text, lang)
 * price(field, locale)
 
-##### Validation
-* string(message)
-* email(message)
-* required(message)
+##### Conditional
+* if
 
 ##### Styles
 * block
 * list--small
 * btn--success
+
+#### Debug
+* log(value => message)
 
 > Operators can work on both the properties and the content of a component.
 
@@ -117,6 +125,7 @@ Examples of conditional rendering are:
 * Enable/disable button
 * Show page when url matches
 * Media queries on screen size change
+* Show/hide on error
 
 > A cool thing about Conditions is that they can be used to matched to a url.
 > This means we can also nest Conditions within Conditions to get subpages and have breadcrumbs.
@@ -127,6 +136,9 @@ For instance, we can have a Collection that points to a collection of products.
 Within this Collection component, we can have 2 child components: 
 * a Heading component with the product title
 * a Text component with the product description
+
+#### Item
+The same as a Collection component, but only for single item stores.
 
 #### Form
 A Form component is a wrapper for various input components.
@@ -143,6 +155,22 @@ A partial can have multiple Section components.
 #### Section
 A Section component is an empty placeholder that can only be used in a Partial component.
 It allows child components to be nested inside a Partial component.
+
+
+## Operators
+Each component can have its own operators.
+They provide finegrained control over its data or rendering.
+Here are some examples for each component.
+
+| Component         | Operator type     |
+|---------------------------------------|
+| Node              | Debug, Conditional
+| Collection        | Debug, Validation, Modifier, Collection
+| Item              | Debug, Validation, Modifier
+| Form              |
+| Partial           |
+| Section           |
+
 
 # Booting
 Assume we have a the most barebone situation for the config.
@@ -173,6 +201,7 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * Maybe introduce a 'private' key in the config that holds sensitive information?
 * We could place node partials as a store in the config? So nodes can point to other nodes, a.k.a. relations.
 * Introduce a "yield" operator. Every component inside a partial can then be assigned to a section.
+* Is Condition component needed?
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
@@ -181,12 +210,16 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * Assign form controls for saved partials, so a partial has its own reusable configuration form
 
 
-| Type              | Uses view? | Uses state?  | Provides props?   |
-|-------------------|------------|--------------|-------------------|
-| Node              | yes        | no           | yes               |
-| Condition         | no         | yes          | no                |
-| Collection        | no         | yes          | yes               |
-| Item              | no         | yes          | yes               |
-| Form              | no         | no           | no                |
-| Partial           | no         | no           | no                |
-| Section           | no         | no           | yes               |
+##### Types
+* View
+* Connector
+* Wrapper
+
+| Type  | Subject               | Uses view? | Uses state?  | Provides props?   | Component or Operator?    |
+|-------|-----------------------|------------|--------------|-------------------|---------------------------|
+| V     | Node                  | yes        | no           | yes               | Component                 |
+| W     | Condition             | no         | yes          | no                | Component
+| C     | Data                  | no         | yes          | yes               | Component
+| W     | Form                  | no         | no           | no                | Component
+| W     | Partial               | no         | no           | no                | Component
+| W     | Section               | no         | no           | yes               | Component
