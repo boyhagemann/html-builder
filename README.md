@@ -82,12 +82,14 @@ Examples for operators are:
 * log(value => message)
 * parents(node) -> for breadcrumbs
 
-##### Filters
+##### Modifiers
 * trim(strings)
 * length(size) -> elipsis ...
 * slug(field)
+* clone(field, alias)
 * upper(field)
 * translate(text, lang)
+* price(field, locale)
 
 ##### Validation
 * string(message)
