@@ -193,9 +193,26 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
 * Maybe introduce a 'private' key in the config that holds sensitive information?
 * We could place node partials as a store in the config? So nodes can point to other nodes, a.k.a. relations.
+* Is a Catch component a Condition where exception = name?
+* Do we really need the Try, Catch and Exception component? Maybe conditions/state are enough, let reducers handle exceptions
+* Introduce a "yield" operator. Every component inside a partial can then be assigned to a section.
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
 * Tag nodes to quickly get a list view of all the tagged nodes
 * Quick controls for changing the behaviour directly from a node list without a config page
+* Assign form controls for saved partials, so a partial has its own reusable configuration form
 
+
+| Type              | Uses view? | Uses state?  | Provides props?   |
+|-------------------|------------|--------------|-------------------|
+| Node              | yes        | no           | yes               |
+| Condition         | no         | yes          | no                |
+| Collection        | no         | yes          | yes               |
+| Item              | no         | yes          | yes               |
+| Form              | no         | no           | no                |
+| Partial           | no         | no           | no                |
+| Section           | no         | no           | yes               |
+| Try               | no         | no           | no                |
+| Catch             | no         | no           | no                |
+| Exception         | no         | no           | no                |
