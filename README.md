@@ -126,7 +126,7 @@ Examples of operators are (grouped by type):
 * hide
 * active (for events)
 
-##### Style
+#### Style
 > Format: style(property, value, [condition])
 * style
 * class
