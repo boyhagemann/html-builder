@@ -90,6 +90,7 @@ Examples of operators are (grouped by type):
 * delay(time)
 * retry(times)
 * defaults(key, value)
+* payload(object)
 
 ##### Validation
 > Format: render(field, [message, [condition]])
@@ -123,16 +124,7 @@ Examples of operators are (grouped by type):
 > Format: render(condition)
 * show
 * hide
-
-##### Event
-> Format: event(action, payload, [condition])
-* click
-* mouseover
-* change
-* show
-* hide
-* drag
-* drop
+* active (for events)
 
 ##### Style
 > Format: style(property, value, [condition])
@@ -151,6 +143,12 @@ All components can nest multiple child components
 #### Node
 They simple render to html with some given properties.
 The properties can be provided by other components or by passing it thru a configuration form.
+
+#### Event
+An event is always bound to a rendering node.
+They are components and not operators.
+This is because the Events can have operators on them, so the need to be components.
+Because they relate to one node, it should be a separate list in the CMS.
 
 #### Collection
 This component can take a collection of data from the store and map each item to the child components.
@@ -189,7 +187,8 @@ Here are some examples for each component.
 
 | Component         | Operator type                                     |
 |-------------------|---------------------------------------------------|
-| Node              | Debug, Conditional, Event                         |
+| Node              | Debug, Rendering                                  |
+| Event             | Debug, Rendering, Action                          |
 | Collection        | Debug, Validation, Modifier, Mapping, Collection  |
 | Item              | Debug, Validation, Modifier, Mapping              |
 | Form              | Validation                                        |
@@ -213,10 +212,12 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * [x] Reuse components with own event scope
 * [x] Fetch async data
 * [x] Add url history driver
-* [ ] Use the condition component
 * [ ] Use the collection component
+* [ ] Use the item component
+* [ ] Use the form component
 * [ ] Use the partial component
 * [ ] Use the section component
+* [ ] Implement operators
 
 
 # Questions that need a solution
@@ -226,7 +227,7 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * Maybe introduce a 'private' key in the config that holds sensitive information?
 * We could place node partials as a store in the config? So nodes can point to other nodes, a.k.a. relations.
 * Introduce a "yield" operator. Every component inside a partial can then be assigned to a section.
-* Is Condition component needed?
+* Is an operator an Action?
 
 # Ideas for the cms part
 * Use autocomplete search to find nodes based on their type and contents
@@ -234,3 +235,4 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * Quick controls for changing the behaviour directly from a node list without a config page
 * Assign form controls for saved partials, so a partial has its own reusable configuration form
 * Import from urls and transform them into nodes.
+* If a partial has multiple sections, show different tabs for their content.
