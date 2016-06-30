@@ -124,7 +124,7 @@ Examples of operators are (grouped by type):
 * show
 * hide
 
-#### Event
+##### Event
 > Format: event(action, payload, [condition])
 * click
 * mouseover
@@ -139,7 +139,7 @@ Examples of operators are (grouped by type):
 * style
 * class
 
-#### Debug
+##### Debug
 > Format: debug(message, [condition])
 * log
 
@@ -166,6 +166,8 @@ The same as a Collection component, but only for single item stores.
 A Form component is a wrapper for various input components.
 With this wrapper we can validate or send data in one go.
 This can be handy for having a Progress component, in which a user sees his progress in steps.
+> A form must scan all children components somehow for 'validate' operators.
+> It must keep a dynamic store of these fields and the status of validation.
 
 #### Partial
 This component is a reference to another node in the structure. 
@@ -177,7 +179,8 @@ A partial can have multiple Section components.
 #### Section
 A Section component is an empty placeholder that can only be used in a Partial component.
 It allows child components to be nested inside a Partial component.
-
+> A section can have child components just like a regular component.
+> These components will be overridden once partial is filled with other components in that section.
 
 ## Component specific operators
 Each component can have its own operators.
@@ -230,4 +233,4 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * Tag nodes to quickly get a list view of all the tagged nodes
 * Quick controls for changing the behaviour directly from a node list without a config page
 * Assign form controls for saved partials, so a partial has its own reusable configuration form
-
+* Import from urls and transform them into nodes.
