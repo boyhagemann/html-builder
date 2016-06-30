@@ -93,10 +93,14 @@ Examples of operators are (grouped by type):
 * trim(strings)
 * length(size) -> elipsis ...
 * slug(field)
-* clone(field, alias)
 * upper(field)
 * translate(text, lang)
 * price(field, locale)
+
+##### Mapping
+* move(field, alias)
+* clone(field, alias)
+* replace(field, value)
 
 ##### Conditional
 * if
@@ -162,14 +166,14 @@ Each component can have its own operators.
 They provide finegrained control over its data or rendering.
 Here are some examples for each component.
 
-| Component         | Operator type     |
-|---------------------------------------|
-| Node              | Debug, Conditional
-| Collection        | Debug, Validation, Modifier, Collection
-| Item              | Debug, Validation, Modifier
-| Form              |
-| Partial           |
-| Section           |
+| Component         | Operator type                                     |
+|-----------------------------------------------------------------------|
+| Node              | Debug, Conditional                                |
+| Collection        | Debug, Validation, Modifier, Mapping, Collection  |
+| Item              | Debug, Validation, Modifier, Mapping              |
+| Form              |                                                   |
+| Partial           | Mapping                                           |
+| Section           | Mapping                                           |
 
 
 # Booting
