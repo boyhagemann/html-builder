@@ -20,10 +20,10 @@ A producer is a stream of data which values change over time.
 They are actually the triggers for sending a message thru Actions.
 The JSON config holds a list of producers used in the application.
 Examples of producers are:
-* user events (click, change, keyUp, drag, resize)
-* timers (they can produce values over time, which is set in a store)
-* sockets (the push values from external sources)
-* stores (when values change in the store, an Action message is sent)
+* [client] user events (click, change, keyUp, drag, resize)
+* [server] timers (they can produce values over time, which is set in a store)
+* [server] sockets (the push values from external sources)
+* [server] stores (when values change in the store, an Action message is sent)
 
 #### Actions
 Actions are only messages that accept a certain payload of metadata.
@@ -66,63 +66,7 @@ An action can trigger a side effect, such as:
 * call a REST resource with a Promise (a user clicked a button that sends an Action message with the resource info as payload).
 * update a store with data from an Action payload (the Promise sends the Action message with the response as payload). 
 
-#### Operators
-On top of the producers there can be many Operators.
-An operator can alter the value or time of the Producer.
-This can be very helpful to have control over the data thats comming from the Producer.
-Examples of operators are (grouped by type):
-
-##### Action
-* debounce(time)
-* delay(time)
-* retry(times)
-* defaults(key, value)
-
-##### Validation
-* string(message)
-* email(message)
-* required(message)
-
-##### Collection
-* limit(count)
-* skip(count)
-* pluck(key)
-* parents(node) -> for breadcrumbs
-
-##### Modifier
-* trim(strings)
-* length(size) -> elipsis ...
-* slug(field)
-* upper(field)
-* translate(text, lang)
-* price(field, locale)
-
-##### Mapping
-* move(field, alias)
-* clone(field, alias)
-* replace(field, value)
-
-##### Conditional
-* if
-
-##### Styles
-* block
-* list--small
-* btn--success
-
-#### Debug
-* log(value => message)
-
-> Operators can work on both the properties and the content of a component.
-
-# Components
-All components can nest multiple child components
-
-#### Node
-They simple render to html with some given properties.
-The properties can be provided by other components or by passing it thru a configuration form.
-
-#### Condition
+#### Conditions
 Components can be rendered only when some conditions are met.
 Examples of conditional rendering are:
 * Show/hide a button
@@ -133,6 +77,80 @@ Examples of conditional rendering are:
 
 > A cool thing about Conditions is that they can be used to matched to a url.
 > This means we can also nest Conditions within Conditions to get subpages and have breadcrumbs.
+
+#### Operators
+On top of the producers there can be many Operators.
+An operator can alter the value or time of the Producer.
+This can be very helpful to have control over the data thats comming from the Producer.
+Examples of operators are (grouped by type):
+
+##### Action
+> Format: action(param)
+* debounce(time)
+* delay(time)
+* retry(times)
+* defaults(key, value)
+
+##### Validation
+> Format: render(field, [message, [condition]])
+* string
+* email
+* required
+
+##### Collection
+> Format: collection(params)
+* limit(count)
+* skip(count)
+* pluck(key)
+* parents(node) -> for breadcrumbs
+
+##### Modifier
+> Format: modify(field, [params, [condition]])
+* trim(strings)
+* length(size) -> elipsis ...
+* slug(field)
+* upper(field)
+* translate(text, lang)
+* price(field, locale)
+
+##### Mapping
+> Format: map(field, alias, [condition])
+* move
+* clone
+* replace
+
+##### Render
+> Format: render(condition)
+* show
+* hide
+
+#### Event
+> Format: event(action, payload, [condition])
+* click
+* mouseover
+* change
+* show
+* hide
+* drag
+* drop
+
+##### Style
+> Format: style(property, value, [condition])
+* style
+* class
+
+#### Debug
+> Format: debug(message, [condition])
+* log
+
+> Operators can work on both the properties and the content of a component.
+
+# Components
+All components can nest multiple child components
+
+#### Node
+They simple render to html with some given properties.
+The properties can be provided by other components or by passing it thru a configuration form.
 
 #### Collection
 This component can take a collection of data from the store and map each item to the child components.
@@ -161,17 +179,17 @@ A Section component is an empty placeholder that can only be used in a Partial c
 It allows child components to be nested inside a Partial component.
 
 
-## Operators
+## Component specific operators
 Each component can have its own operators.
 They provide finegrained control over its data or rendering.
 Here are some examples for each component.
 
 | Component         | Operator type                                     |
 |-------------------|---------------------------------------------------|
-| Node              | Debug, Conditional                                |
+| Node              | Debug, Conditional, Event                         |
 | Collection        | Debug, Validation, Modifier, Mapping, Collection  |
 | Item              | Debug, Validation, Modifier, Mapping              |
-| Form              |                                                   |
+| Form              | Validation                                        |
 | Partial           | Mapping                                           |
 | Section           | Mapping                                           |
 
@@ -213,17 +231,3 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * Quick controls for changing the behaviour directly from a node list without a config page
 * Assign form controls for saved partials, so a partial has its own reusable configuration form
 
-
-##### Types
-* View
-* Connector
-* Wrapper
-
-| Type  | Subject               | Uses view? | Uses state?  | Provides props?   | Component or Operator?    |
-|-------|-----------------------|------------|--------------|-------------------|---------------------------|
-| V     | Node                  | yes        | no           | yes               | Component                 |
-| W     | Condition             | no         | yes          | no                | Component                 |
-| C     | Data                  | no         | yes          | yes               | Component                 |           
-| W     | Form                  | no         | no           | no                | Component                 |
-| W     | Partial               | no         | no           | no                | Component                 |
-| W     | Section               | no         | no           | yes               | Component                 |
