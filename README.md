@@ -15,7 +15,7 @@ A proof-of-concept setup for build SPA pages with a JSON config file
 # Architecture
 The system consists of several concepts that communicate in some way to each other.
 
-#### Producers
+##### Producers
 A producer is a stream of data which values change over time.
 They are actually the triggers for sending a message thru Actions.
 The JSON config holds a list of producers used in the application.
@@ -25,7 +25,7 @@ Examples of producers are:
 * [server] sockets (the push values from external sources)
 * [server] stores (when values change in the store, an Action message is sent)
 
-#### Actions
+##### Actions
 Actions are only messages that accept a certain payload of metadata.
 These Actions or part of things called Reducers, but thats only for keeping code managable.
 Actions are not part of the JSON config, but only exist in the application code.
@@ -33,7 +33,7 @@ When an action is called, that could result in 2 things:
 * calling more Actions
 * doing a side effect (data fetching, I/O operations, render DOM)
 
-#### Stores
+##### Stores
 The are the holders of the state.
 Any dataset that has more or less influence on the application should be in here.
 Stores can only be manipulated thru Actions.
@@ -60,13 +60,13 @@ This gives us the abilitiy to do "time travel debugging", share states, unlimite
 > Every store can have an (intitial) set of data included in the JSON config.
 > Actually, all json config keys are then all stores automatically!
 
-#### Side effects
+##### Side effects
 An action can trigger a side effect, such as:
 * render the DOM based on an Action payload (when a store changes, an Action message was sent).
 * call a REST resource with a Promise (a user clicked a button that sends an Action message with the resource info as payload).
 * update a store with data from an Action payload (the Promise sends the Action message with the response as payload). 
 
-#### Conditions
+##### Conditions
 Components can be rendered only when some conditions are met.
 Examples of conditional rendering are:
 * Show/hide a button
@@ -78,7 +78,7 @@ Examples of conditional rendering are:
 > A cool thing about Conditions is that they can be used to matched to a url.
 > This means we can also nest Conditions within Conditions to get subpages and have breadcrumbs.
 
-#### Operators
+# Operators
 On top of the producers there can be many Operators.
 An operator can alter the value or time of the Producer.
 This can be very helpful to have control over the data thats comming from the Producer.
@@ -140,41 +140,41 @@ Examples of operators are (grouped by type):
 # Components
 All components can nest multiple child components
 
-#### Node
+##### Node
 They simple render to html with some given properties.
 The properties can be provided by other components or by passing it thru a configuration form.
 
-#### Event
+##### Event
 An event is always bound to a rendering node.
 They are components and not operators.
 This is because the Events can have operators on them, so the need to be components.
 Because they relate to one node, it should be a separate list in the CMS.
 
-#### Collection
+##### Collection
 This component can take a collection of data from the store and map each item to the child components.
 For instance, we can have a Collection that points to a collection of products.
 Within this Collection component, we can have 2 child components: 
 * a Heading component with the product title
 * a Text component with the product description
 
-#### Item
+##### Item
 The same as a Collection component, but only for single item stores.
 
-#### Form
+##### Form
 A Form component is a wrapper for various input components.
 With this wrapper we can validate or send data in one go.
 This can be handy for having a Progress component, in which a user sees his progress in steps.
 > A form must scan all children components somehow for 'validate' operators.
 > It must keep a dynamic store of these fields and the status of validation.
 
-#### Partial
+##### Partial
 This component is a reference to another node in the structure. 
 It can be any node, either the current tree or another one.
 It will render exactly the same as the original.
 If the original changes, then these changes are also visible in this Partial component.
 A partial can have multiple Section components.
 
-#### Section
+##### Section
 A Section component is an empty placeholder that can only be used in a Partial component.
 It allows child components to be nested inside a Partial component.
 > A section can have child components just like a regular component.
