@@ -84,7 +84,7 @@ An operator can alter the value or time of the Producer.
 This can be very helpful to have control over the data thats comming from the Producer.
 Examples of operators are (grouped by type):
 
-##### Action
+#### Action
 > Format: action(param)
 * debounce(time)
 * delay(time)
@@ -92,20 +92,20 @@ Examples of operators are (grouped by type):
 * defaults(key, value)
 * payload(object)
 
-##### Validation
+#### Validation
 > Format: render(field, [message, [condition]])
 * string
 * email
 * required
 
-##### Collection
+#### Collection
 > Format: collection(params)
 * limit(count)
 * skip(count)
 * pluck(key)
 * parents(node) -> for breadcrumbs
 
-##### Modifier
+#### Modifier
 > Format: modify(field, [params, [condition]])
 * trim(strings)
 * length(size) -> elipsis ...
@@ -114,13 +114,13 @@ Examples of operators are (grouped by type):
 * translate(text, lang)
 * price(field, locale)
 
-##### Mapping
+#### Mapping
 > Format: map(field, alias, [condition])
 * move
 * clone
 * replace
 
-##### Render
+#### Render
 > Format: render(condition)
 * show
 * hide
@@ -131,7 +131,7 @@ Examples of operators are (grouped by type):
 * style
 * class
 
-##### Debug
+#### Debug
 > Format: debug(message, [condition])
 * log
 
@@ -140,41 +140,41 @@ Examples of operators are (grouped by type):
 # Components
 All components can nest multiple child components
 
-##### Node
+#### Node
 They simple render to html with some given properties.
 The properties can be provided by other components or by passing it thru a configuration form.
 
-##### Event
+#### Event
 An event is always bound to a rendering node.
 They are components and not operators.
 This is because the Events can have operators on them, so the need to be components.
 Because they relate to one node, it should be a separate list in the CMS.
 
-##### Collection
+#### Collection
 This component can take a collection of data from the store and map each item to the child components.
 For instance, we can have a Collection that points to a collection of products.
 Within this Collection component, we can have 2 child components: 
 * a Heading component with the product title
 * a Text component with the product description
 
-##### Item
+#### Item
 The same as a Collection component, but only for single item stores.
 
-##### Form
+#### Form
 A Form component is a wrapper for various input components.
 With this wrapper we can validate or send data in one go.
 This can be handy for having a Progress component, in which a user sees his progress in steps.
 > A form must scan all children components somehow for 'validate' operators.
 > It must keep a dynamic store of these fields and the status of validation.
 
-##### Partial
+#### Partial
 This component is a reference to another node in the structure. 
 It can be any node, either the current tree or another one.
 It will render exactly the same as the original.
 If the original changes, then these changes are also visible in this Partial component.
 A partial can have multiple Section components.
 
-##### Section
+#### Section
 A Section component is an empty placeholder that can only be used in a Partial component.
 It allows child components to be nested inside a Partial component.
 > A section can have child components just like a regular component.
