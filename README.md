@@ -15,17 +15,12 @@ A proof-of-concept setup for build SPA pages with a JSON config file
 # Architecture
 The system consists of several concepts that communicate in some way to each other.
 
-##### Producers
+#### Events
 A producer is a stream of data which values change over time.
 They are actually the triggers for sending a message thru Actions.
-The JSON config holds a list of producers used in the application.
-Examples of producers are:
-* [client] user events (click, change, keyUp, drag, resize)
-* [server] timers (they can produce values over time, which is set in a store)
-* [server] sockets (the push values from external sources)
-* [server] stores (when values change in the store, an Action message is sent)
+The JSON config holds a list of events used in the application.
 
-##### Actions
+#### Actions
 Actions are only messages that accept a certain payload of metadata.
 These Actions or part of things called Reducers, but thats only for keeping code managable.
 Actions are not part of the JSON config, but only exist in the application code.
@@ -33,7 +28,7 @@ When an action is called, that could result in 2 things:
 * calling more Actions
 * doing a side effect (data fetching, I/O operations, render DOM)
 
-##### Stores
+#### Stores
 The are the holders of the state.
 Any dataset that has more or less influence on the application should be in here.
 Stores can only be manipulated thru Actions.
@@ -43,6 +38,7 @@ Examples of stores are:
 * Data collected from a resource
 * Window information (for the current url and the screen size for example)
 * Validation errors (for displaying form messages)
+* Current input values for building requests
 * Translations
 * A simple counter
 * The initial JSON config to build the entire system!
@@ -55,18 +51,18 @@ Every store can have a driver (reducer):
 * Renderer (for the nodes)
 
 All data is being stored in a plain object, used by the application.
-This gives us the abilitiy to do "time travel debugging", share states, unlimited undos of every action, etc.
+This gives us the ability to do "time travel debugging", share states, unlimited undos of every action, etc.
 
-> Every store can have an (intitial) set of data included in the JSON config.
+> Every store can have an (initial) set of data included in the JSON config.
 > Actually, all json config keys are then all stores automatically!
 
-##### Side effects
+#### Side effects
 An action can trigger a side effect, such as:
 * render the DOM based on an Action payload (when a store changes, an Action message was sent).
 * call a REST resource with a Promise (a user clicked a button that sends an Action message with the resource info as payload).
 * update a store with data from an Action payload (the Promise sends the Action message with the response as payload). 
 
-##### Conditions
+#### Conditions
 Components can be rendered only when some conditions are met.
 Examples of conditional rendering are:
 * Show/hide a button
@@ -212,6 +208,7 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 * [x] Reuse components with own event scope
 * [x] Fetch async data
 * [x] Add url history driver
+* [ ] Use the event component
 * [ ] Use the collection component
 * [ ] Use the item component
 * [ ] Use the form component
@@ -222,6 +219,7 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 
 # Questions that need a solution
 * How to handle translations?
+* How to handle files?
 * Is every input component explicitly bound to a store?
 * Is rendering a component tree actually an Action message sending multiple Action messages for the node children?
 * Maybe introduce a 'private' key in the config that holds sensitive information?

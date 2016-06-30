@@ -20,8 +20,26 @@ nodes:
     type: ul
   - id: 5
     parent: 4
+    type: collection
+    properties:
+      store: products
+      alias: my-alias.store
+  - id: 6
+    parent: 5
     type: li
-    text: {{my-alias.store.column.title}}
+    text: {{my-alias.store.title_copied}}
+
+# Events
+events:
+  - id: 1
+    node: 4
+    type: event
+    properties:
+      on: click
+      action: INCREMENT
+      payload:
+        amount: 1
+    order: 1
 
 # The producers produce values over time, independent of any Node component.
 producers:
@@ -34,21 +52,25 @@ producers:
 # in the given order after a Node is rendered.
 operators:
   - id: 1
-    node: 4
-    type: collection
+    node: 5
+    type: copy
     properties:
-      store: products
-      alias: my-alias.store
+
+      from: title
+      to: title_copied
     order: 1
   - id: 2
-    node: 4
-    type: event
+    event: 1
+    type: active
     properties:
-      on: click
-      action: INCREMENT
-      payload:
-        amount: 1
+      condition: a-nice-condition
     order: 1
+  - id: 2
+    event: 1
+    type: debounce
+    properties:
+      time: 500
+    order: 2
 
 stores:
   - id: 1
@@ -71,4 +93,20 @@ stores:
     driver: generic
 
 conditions:
-
+  - id: 1
+    name: a-nice-condition
+    label: A nice condition
+    type: or
+    children:
+      - id: 2
+        name: If A
+        type: and
+        state: {{my-alias.store.title}}
+        operator: equals
+        value: Test title
+      - id: 3
+        name: If B
+        type: and
+        state: {{my-alias.store.title}}
+        operator: ends_with
+        value: Test
