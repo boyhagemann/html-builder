@@ -167,7 +167,7 @@ They provide finegrained control over its data or rendering.
 Here are some examples for each component.
 
 | Component         | Operator type                                     |
-|-----------------------------------------------------------------------|
+|-------------------|---------------------------------------------------|
 | Node              | Debug, Conditional                                |
 | Collection        | Debug, Validation, Modifier, Mapping, Collection  |
 | Item              | Debug, Validation, Modifier, Mapping              |
@@ -222,8 +222,8 @@ When the store updates, then the nodes get automatically rendered thanks to the 
 | Type  | Subject               | Uses view? | Uses state?  | Provides props?   | Component or Operator?    |
 |-------|-----------------------|------------|--------------|-------------------|---------------------------|
 | V     | Node                  | yes        | no           | yes               | Component                 |
-| W     | Condition             | no         | yes          | no                | Component
-| C     | Data                  | no         | yes          | yes               | Component
-| W     | Form                  | no         | no           | no                | Component
-| W     | Partial               | no         | no           | no                | Component
-| W     | Section               | no         | no           | yes               | Component
+| W     | Condition             | no         | yes          | no                | Component                 |
+| C     | Data                  | no         | yes          | yes               | Component                 |           
+| W     | Form                  | no         | no           | no                | Component                 |
+| W     | Partial               | no         | no           | no                | Component                 |
+| W     | Section               | no         | no           | yes               | Component                 |
