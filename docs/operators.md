@@ -1,5 +1,7 @@
 # Operators
-
+On top of the producers there can be many Operators.
+An operator can alter the value or time of the Producer.
+This can be very helpful to have control over the data thats comming from the Producer.
 
 ## Examples
 

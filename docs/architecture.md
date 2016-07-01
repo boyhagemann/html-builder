@@ -60,9 +60,3 @@ Examples of conditional rendering are:
 
 > A cool thing about Conditions is that they can be used to matched to a url.
 > This means we can also nest Conditions within Conditions to get subpages and have breadcrumbs.
-
-# Operators
-On top of the producers there can be many Operators.
-An operator can alter the value or time of the Producer.
-This can be very helpful to have control over the data thats comming from the Producer.
-These are [examples of operators] (/docs/operators.md#Examples),
