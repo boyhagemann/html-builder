@@ -74,6 +74,10 @@ operators:
 
 stores:
   - id: 1
+    name: local
+    collection: false
+    driver: localStorage
+  - id: 2
     name: nodes
     connection:
       adapter: rest
@@ -82,7 +86,7 @@ stores:
         method: GET
     collection: true
     driver: dom-renderer
-  - id: 2
+  - id: 3
     name: products
     connection:
       adapter: rest
