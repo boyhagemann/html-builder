@@ -2,7 +2,7 @@
 A proof-of-concept setup for build SPA pages with a JSON config file
 
 #### Implementations
-* [Cycle.js engine] (http://github.com/boyhagemann/html-builder-engine-cycle) (work in progress, see [Roadmap] (/README.md#roadmap))
+* [Cycle.js engine](http://github.com/boyhagemann/html-builder-engine-cycle) (work in progress, see [Roadmap](/README.md#roadmap))
 * React.js engine (coming up)
 * Elm engine (coming up)
 
